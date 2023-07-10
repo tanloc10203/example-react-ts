@@ -7,6 +7,7 @@ export const getAllUsers = createAsyncThunk(
   async (filters: Filters) => {
     try {
       const response = await userServices.getAllUsers(filters);
+
       return response;
     } catch (error) {
       console.log(`error getAllUsers`, error);

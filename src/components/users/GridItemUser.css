@@ -25,3 +25,8 @@
 .mb-2 {
   margin-bottom: 8px;
 }
+
+.loading-btn {
+  display: flex;
+  margin-top: 12px;
+}

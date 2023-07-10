@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { UserState } from "~/types";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { Filters, UserState } from "~/types";
 import { getAllUsers } from "./userThunk";
 import { RootState } from "~/apps";
 
@@ -22,7 +23,11 @@ const initialState: UserState = {
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    setFilters: (state, { payload }: PayloadAction<Filters>) => {
+      state.filters = { ...payload };
+    },
+  },
   extraReducers(builder) {
     builder.addCase(getAllUsers.pending, (state) => {
       state.loading = "pending";
@@ -49,6 +54,7 @@ export const userActions = userSlice.actions;
 
 export const filterUserSelector = (state: RootState) => state.user.filters;
 export const paginationSelector = (state: RootState) => state.user.paginations;
+export const loadingUserSelector = (state: RootState) => state.user.loading;
 export const dataUserSelector = (state: RootState) => state.user.data;
 
 export default userReducer;
