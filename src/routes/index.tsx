@@ -7,7 +7,8 @@ import { ErrorPage } from "~/pages";
 import { Paths } from "~/types";
 
 const Home = Loadable(lazy(() => import("~/pages/Home")));
-const AddUser = Loadable(lazy(() => import("~/pages/AddUser")));
+const AddUser = Loadable(lazy(() => import("~/pages/User/AddUser")));
+const ListUser = Loadable(lazy(() => import("~/pages/User/ListUser")));
 const Login = Loadable(lazy(() => import("~/pages/LoginV2")));
 
 const router = createBrowserRouter([
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
       },
       {
         path: Paths.AddUser,
+        element: <AddUser />,
+      },
+      {
+        path: Paths.ListUser,
+        element: <ListUser />,
+      },
+      {
+        path: Paths.UpdateUser + "/:userId",
         element: <AddUser />,
       },
     ],
