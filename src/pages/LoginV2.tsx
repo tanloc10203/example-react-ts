@@ -1,5 +1,5 @@
 import { Button, Space } from "antd";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useLayoutEffect } from "react";
 import "./Login.css";
 import { authServices } from "~/services";
 import { LocalStorage, LoginInput, Paths, Status } from "~/types";
@@ -15,6 +15,12 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const [status, setStatus] = useState<Status>(Status.Ready);
   const [error, setError] = useState("");
+  const token = localStorage.getItem(LocalStorage.Token);
+
+  useLayoutEffect(() => {
+    if (!Boolean(token)) return;
+    navigate(Paths.Home, { replace: true });
+  }, [token]);
 
   const onFinish = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

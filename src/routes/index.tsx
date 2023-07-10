@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import { PrivateRoute } from "~/components";
 import Loadable from "~/components/Loadable";
 import Main from "~/layouts/Main";
 import { ErrorPage } from "~/pages";
@@ -12,7 +13,11 @@ const Login = Loadable(lazy(() => import("~/pages/LoginV2")));
 const router = createBrowserRouter([
   {
     path: Paths.Home,
-    element: <Main />,
+    element: (
+      <PrivateRoute>
+        <Main />
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
