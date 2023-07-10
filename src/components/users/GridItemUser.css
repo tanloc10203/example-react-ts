@@ -1,0 +1,27 @@
+.user-item {
+  padding: 8px 0;
+  border-radius: 8px;
+  border: 2px solid #ededed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: all 0.25s ease-in-out 0s;
+}
+
+.user-item:hover {
+  border-color: blue;
+}
+
+.user-item__fullName {
+  margin-top: 8px;
+}
+
+.mr-2 {
+  margin-right: 8px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}

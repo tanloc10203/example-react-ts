@@ -1,4 +1,8 @@
-import { Paginations } from "./pagination";
+import { Filters, Paginations } from "./pagination";
+
+export enum UserPaths {
+  GetAllUsers = "/api/users",
+}
 
 export interface User {
   id: number;
@@ -14,6 +18,8 @@ export interface UserState {
   data: Array<User>;
   loading: Loading;
   error: string;
+  filters: Filters;
+  paginations: Paginations;
 }
 
 export interface UserResponse extends Paginations {

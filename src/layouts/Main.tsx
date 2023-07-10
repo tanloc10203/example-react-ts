@@ -1,13 +1,16 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import navConfig from "~/routes/navbar";
 
-const { Content, Footer, Sider } = Layout;
+const { Content, Header, Footer, Sider } = Layout;
 
 const Main: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const locations = useLocation();
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
 
   return (
     <>
@@ -28,7 +31,8 @@ const Main: React.FC = () => {
         </Sider>
 
         <Layout>
-          <Content style={{ margin: "0 16px" }}>
+          <Header style={{ padding: 0, background: colorBgContainer }} />
+          <Content style={{ margin: "16px 16px 0 16px" }}>
             <Outlet />
           </Content>
           <Footer style={{ textAlign: "center" }}>
